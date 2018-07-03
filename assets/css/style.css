@@ -1,0 +1,16 @@
+.jumbotron{
+  background-image: url("../images/sci_fi_movie_logos.jpg");
+  background-size: contain;
+}
+
+.display-4{
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 100px;
+  text-shadow:
+		-3px -3px 0 #000,
+		3px -3px 0 #000,
+		-3px 3px 0 #000,
+		3px 3px 0 #000;
+}
