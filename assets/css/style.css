@@ -1,16 +1,56 @@
-.jumbotron{
-  background-image: url("../images/sci_fi_movie_logos.jpg");
-  background-size: contain;
+* {
+  box-sizing: border-box;
 }
 
-.display-4{
+body {
+  margin: auto;
+  align-content: center;
+  text-align: center;
+}
+
+.jumbotron {
+  background-image: url("../images/sci_fi_movie_logos.jpg");
+  background-size: contain;
+  height: 150px;
+}
+
+.display-4 {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  font-size: 100px;
-  text-shadow:
-		-3px -3px 0 #000,
-		3px -3px 0 #000,
-		-3px 3px 0 #000,
-		3px 3px 0 #000;
+  font-size: 65px;
+  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000,
+    3px 3px 0 #000;
+}
+
+#startButton {
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 75px;
+}
+
+#choiceA:hover {
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.981);
+}
+
+#choiceB:hover {
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgb(0, 8, 255);
+}
+
+#choiceC:hover {
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgb(255, 238, 0);
+}
+
+#choiceD:hover {
+  border-color: #66afe9;
+  box-shadow: 0 0 8px rgb(255, 0, 212);
 }
