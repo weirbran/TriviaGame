@@ -35,22 +35,22 @@ body {
   font-size: 75px;
 }
 
-#choiceA:hover {
+#firstChoice:hover {
   border-color: #66afe9;
   box-shadow: 0 0 8px rgba(255, 0, 0, 0.981);
 }
 
-#choiceB:hover {
+#secondChoice:hover {
   border-color: #66afe9;
   box-shadow: 0 0 8px rgb(0, 8, 255);
 }
 
-#choiceC:hover {
+#thirdChoice:hover {
   border-color: #66afe9;
   box-shadow: 0 0 8px rgb(34, 255, 0);
 }
 
-#choiceD:hover {
+#fourthChoice:hover {
   border-color: #66afe9;
   box-shadow: 0 0 8px rgb(255, 0, 212);
 }
