@@ -26,27 +26,39 @@ var number = 30;
 //  the "run" function
 var intervalId;
 
-$("#startButton").on("click", function startGame() {
+function startGame() {
   $("button").remove();
 
   $("#timeRemaining").html("<div>Time Remaining: " + number + "</div><br>");
 
-  function timer() {
+  startTimer();
+
+  function startTimer() {
     intervalId = setInterval(decrement, 1000);
-    console.log(intervalId);
   }
-  timer();
 
   function decrement() {
     number--;
     $("#timeRemaining").html("<div>Time Remaining: " + number + "</div><br>");
+    if (number === 0) {
+      stopTimer();
+      $("#timeRemaining").html("<div>Time's Up!<div>");
+      $("#timeRemaining").append(
+        "<div>The correct answer was: " + answers[count] + "</div>"
+      );
+      $("#questions").remove();
+      $(".choices").remove();
+      displayImage();
+      unanswered++;
+      count++;
+    }
   }
 
-  $("#questions").html(questions[0]);
-  $("#firstChoice").text(firstChoice[0]);
-  $("#secondChoice").text(secondChoice[0]);
-  $("#thirdChoice").text(thirdChoice[0]);
-  $("#fourthChoice").text(fourthChoice[0]);
+  function stopTimer() {
+    clearInterval(intervalId);
+  }
+
+  displayQuestion();
 
   $("#firstChoice").on("click", solution);
   $("#secondChoice").on("click", solution);
@@ -57,17 +69,20 @@ $("#startButton").on("click", function startGame() {
   //and increases/decreases the win count, and the count for the index
 
   function solution() {
-    if ($(this).text() === answers[0]) {
-      correct++;
-      count++;
+    if ($(this).text() === answers[count]) {
+      stopTimer();
       correctAnswer();
       displayImage();
-    } else {
-      incorrect++;
+      correct++;
       count++;
-      alert("You got that wrong!");
+      displayQuestion();
+    } else {
+      stopTimer();
       incorrectAnswer();
       displayImage();
+      incorrect++;
+      count++;
+      displayQuestion();
     }
   }
 
@@ -80,7 +95,7 @@ $("#startButton").on("click", function startGame() {
   //     alert("You got that wrong!");
   //   }
   // });
-});
+}
 
 //function displayImage() {
 //   $("#image").html("<img src=" + images[count] + " width='400px'>");
@@ -89,7 +104,7 @@ $("#startButton").on("click", function startGame() {
 //clearInterval (setInterval);
 
 function displayImage() {
-  $("#image-holder").html("<img src=" + images[0] + " alt='Bullet Time'/>");
+  $("#image-holder").html("<img src=" + images[count] + " alt='Bullet Time'/>");
 }
 
 function correctAnswer() {
@@ -100,8 +115,35 @@ function correctAnswer() {
 
 function incorrectAnswer() {
   $("#timeRemaining").append(
-    "<div>Incorrect! The correct answer was: " + answers[0] + "!</div>"
+    "<div>Incorrect! The correct answer was: " + answers[count] + "</div>"
   );
   $("#questions").remove();
   $(".choices").remove();
 }
+
+function displayQuestion() {
+  $("#questions").text(questions[count]);
+  $("#firstChoice").text(firstChoice[count]);
+  $("#secondChoice").text(secondChoice[count]);
+  $("#thirdChoice").text(thirdChoice[count]);
+  $("#fourthChoice").text(fourthChoice[count]);
+}
+
+function endGame() {
+  if (count === questions.length - 1) {
+    stopTimer();
+    $("#questions").remove();
+    $(".choices").html(
+      "<div>The game is now finished. Here are your results:</div>"
+    );
+    $(".choices").append("<div>Correct Answers:" + correct + "</div>");
+    $(".choices").append("<div>Incorrect Answers:" + incorrect + "</div>");
+    $(".choices").append("<div>Unanswered Answers:" + unanswered + "</div>");
+  }
+}
+
+// stopTime;
+
+$("#startButton").on("click", function() {
+  startGame();
+});
