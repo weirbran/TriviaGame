@@ -14,7 +14,7 @@ var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
 var images = [
-  "assets/images/trinity.gif",
+  "assets/images/bulletTime.gif",
   "assets/images/t800.gif",
   "assets/images/avengers.gif",
   "assets/images/jurassicpark.gif"
@@ -60,35 +60,15 @@ $("#startButton").on("click", function startGame() {
     if ($(this).text() === answers[0]) {
       correct++;
       count++;
-      alert("You got that right!");
       correctAnswer();
       displayImage();
     } else {
       incorrect++;
       count++;
       alert("You got that wrong!");
-      // incorrectAnswer();
-      // displayImage();
+      incorrectAnswer();
+      displayImage();
     }
-  }
-
-  function displayImage() {
-    $("#image-holder").html("<img src=" + images[0] + "/>");
-  }
-
-  function correctAnswer() {
-    $("#timeRemaining").append("<div>Correct!</div>");
-    $("#questions").remove();
-    $("#choices").remove();
-  }
-
-  function incorrectAnswer() {
-    $("#timeRemaining").append(
-      "<div>Incorrect! The correct answer was: " + answer[0] + "!</div>"
-    );
-    $("#timeRemaining").append();
-    $("#questions").remove();
-    $("#choices").remove();
   }
 
   // userChoice = $(".choices").on("click", function() {
@@ -107,3 +87,21 @@ $("#startButton").on("click", function startGame() {
 // }
 //function displayAnswer(){
 //clearInterval (setInterval);
+
+function displayImage() {
+  $("#image-holder").html("<img src=" + images[0] + " alt='Bullet Time'/>");
+}
+
+function correctAnswer() {
+  $("#timeRemaining").append("<div>Correct!</div>");
+  $("#questions").remove();
+  $(".choices").remove();
+}
+
+function incorrectAnswer() {
+  $("#timeRemaining").append(
+    "<div>Incorrect! The correct answer was: " + answers[0] + "!</div>"
+  );
+  $("#questions").remove();
+  $(".choices").remove();
+}
