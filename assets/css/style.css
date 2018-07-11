@@ -54,3 +54,16 @@ body {
   border-color: #66afe9;
   box-shadow: 0 0 8px rgb(255, 0, 212);
 }
+
+@media screen and (max-width: 980px) {
+  margin: auto;
+}
+
+.choices {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#questions {
+  margin-bottom: 30px;
+}
