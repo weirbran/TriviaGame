@@ -56,7 +56,37 @@ body {
 }
 
 @media screen and (max-width: 980px) {
-  margin: auto;
+  body {
+    margin: auto;
+    align-content: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    margin: auto;
+    align-content: center;
+    text-align: center;
+  }
+  .jumbotron {
+    background-image: url("../images/sci_fi_movie_logos.jpg");
+    background-size: contain;
+    height: 220px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    margin: auto;
+    align-content: center;
+    text-align: center;
+  }
+  .jumbotron {
+    background-image: url("../images/sci_fi_movie_logos.jpg");
+    background-size: contain;
+    height: 220px;
+  }
 }
 
 .choices {

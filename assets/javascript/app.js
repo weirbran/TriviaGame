@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //Global variables
   var questions = [
     "In 'The Matrix', what was the name of Morpheus' ship?",
     "What is the model number of Arnold's Schwarzenegger's terminator in 'Terminator 2'?",
@@ -75,12 +76,9 @@ $(document).ready(function() {
   ];
 
   var number = 30;
-
-  //  Variable that will hold our interval ID when we execute
-  //  the "run" function
   var intervalId;
 
-  //function that starts the game
+  //Starts the game
   function startGame() {
     $("button").remove();
 
@@ -90,16 +88,15 @@ $(document).ready(function() {
 
     displayQuestion();
 
+    //Starts timer
     function startTimer() {
       intervalId = setInterval(decrement, 1000);
     }
 
+    //Counts down the seconds from 30
     function decrement() {
       number--;
       $("#timeRemaining").html("<div>Time Remaining: " + number + "</div><br>");
-
-      //if the time runs out, then let the user know and display the correct answer along with the image, increase the unanswered question count
-      //and move on to the next question
       if (number === 0) {
         stopTimer();
         $("#timeRemaining").html("<div>Time's Up!<div>");
@@ -114,25 +111,26 @@ $(document).ready(function() {
       }
     }
 
-    //stops the timer and displays the next question
+    //Stops the timer and moves on to appropriate action
     function stopTimer() {
       clearInterval(intervalId);
-      number = 31;
+      number = 30;
       if (count < questions.length - 1) {
         setTimeout(nextQuestion, 5000);
         setTimeout(startTimer, 5000);
+      } else {
+        setTimeout(endGame, 5000);
       }
     }
 
-    //makes the quiz options 'clickable' and runs the solution function to check the user's answer
+    //Allows user to click on the quiz options
     $("#firstChoice").on("click", solution);
     $("#secondChoice").on("click", solution);
     $("#thirdChoice").on("click", solution);
     $("#fourthChoice").on("click", solution);
 
-    //checks the user's selection against the answer in the answer array
+    //Checks to see if user's answer is correct/incorrect
     function solution() {
-      //if the user's selection is correct, then stop time, display image, increase correct count, and move to next question
       if ($(this).text() === answers[count]) {
         stopTimer();
         correctAnswer();
@@ -140,7 +138,6 @@ $(document).ready(function() {
         correct++;
         count++;
       } else {
-        //if incorrect, then stop time, display correct answer, display image, increase incorrect count, and move to next question
         stopTimer();
         incorrectAnswer();
         displayImage();
@@ -150,19 +147,19 @@ $(document).ready(function() {
     }
   }
 
-  //displays a related image to the user
+  //Displays image related to question to the user
   function displayImage() {
     $("#image-holder").html("<img src=" + images[count] + " />");
   }
 
-  //confirms to the user that they've answered correctly
+  //Tells user that they've answered correctly
   function correctAnswer() {
     $("#timeRemaining").append("<div>Correct!</div>");
     $("#questions").text("");
     $(".choices").text("");
   }
 
-  //shows the user what the correct answer is after they answer incorrectly
+  //Tells user that they've answered incorrectly
   function incorrectAnswer() {
     $("#timeRemaining").append(
       "<div>Incorrect! The correct answer was: " + answers[count] + "</div>"
@@ -171,7 +168,7 @@ $(document).ready(function() {
     $(".choices").text("");
   }
 
-  //displays the questions to the user
+  //Displays questions to the user
   function displayQuestion() {
     $("#questions").html("<div>" + questions[count] + "</div>");
     $("#firstChoice").html("<div>" + firstChoice[count] + "</div>");
@@ -182,38 +179,31 @@ $(document).ready(function() {
 
   function nextQuestion() {
     $("#image-holder").text("");
-    if (count === questions.length - 1) {
-      endGame();
-    } else {
+    if (count <= questions.length - 1) {
       displayQuestion();
     }
   }
 
-  //checks to see if the game is out of questions to ask
+  //Checks to see if game is out of questions
   function endGame() {
-    stopTimer();
-    //if the game is out of questions, then display the user's results
     if (count === questions.length) {
-      // stopTimer();
       $("#questions").html(
         "<div>The game is now finished. Here are your results:</div>"
       );
-      $("#firstChoice").text("<div>Correct Answers:" + correct + "</div>");
-      $("#secondChoice").text("<div>Incorrect Answers:" + incorrect + "</div>");
-      $("#thirdChoice").text(
-        "<div>Unanswered Answers:" + unanswered + "</div>"
-      );
-      $("#fourthChoice").text("");
-      $("#startButton").html("<button>Start Over?</button>");
-
-      $("#startButton").on("click", function() {
+      $("#firstChoice").text("Correct Answers: " + correct);
+      $("#secondChoice").text("Incorrect Answers: " + incorrect);
+      $("#thirdChoice").text("Unanswered Answers: " + unanswered);
+      $("#fourthChoice").html("");
+      $("#image-holder").html("<button>Start Over?</button>");
+      $("#image-holder").on("click", function() {
         reset();
       });
     }
   }
 
-  //resets the game results
+  //Resets the game results
   function reset() {
+    clearInterval(intervalId);
     correct = 0;
     incorrect = 0;
     unanswered = 0;
@@ -221,7 +211,7 @@ $(document).ready(function() {
     startGame();
   }
 
-  //when the user clicks the Start button, then the game starts
+  //Starts the game when button is clicked
   $("#startButton").on("click", function() {
     startGame();
   });
