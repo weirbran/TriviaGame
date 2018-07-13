@@ -75,7 +75,7 @@ $(document).ready(function() {
     "assets/images/DeLorean.gif"
   ];
 
-  var number = 30;
+  var number = 10;
   var intervalId;
 
   //Starts the game
@@ -100,10 +100,9 @@ $(document).ready(function() {
       if (number === 0) {
         stopTimer();
         $("#timeRemaining").html("<div>Time's Up!<div>");
-        $("#timeRemaining").append(
+        $("#questions").append(
           "<div>The correct answer was: " + answers[count] + "</div>"
         );
-        $("#questions").text("");
         $(".choices").text("");
         displayImage();
         unanswered++;
@@ -114,12 +113,12 @@ $(document).ready(function() {
     //Stops the timer and moves on to appropriate action
     function stopTimer() {
       clearInterval(intervalId);
-      number = 30;
+      number = 10;
       if (count < questions.length - 1) {
-        setTimeout(nextQuestion, 5000);
-        setTimeout(startTimer, 5000);
+        setTimeout(nextQuestion, 3000);
+        setTimeout(startTimer, 3000);
       } else {
-        setTimeout(endGame, 5000);
+        setTimeout(endGame, 3000);
       }
     }
 
@@ -154,17 +153,15 @@ $(document).ready(function() {
 
   //Tells user that they've answered correctly
   function correctAnswer() {
-    $("#timeRemaining").append("<div>Correct!</div>");
-    $("#questions").text("");
+    $("#questions").html("<div>Correct!</div>");
     $(".choices").text("");
   }
 
   //Tells user that they've answered incorrectly
   function incorrectAnswer() {
-    $("#timeRemaining").append(
+    $("#questions").html(
       "<div>Incorrect! The correct answer was: " + answers[count] + "</div>"
     );
-    $("#questions").text("");
     $(".choices").text("");
   }
 
@@ -179,11 +176,20 @@ $(document).ready(function() {
 
   function nextQuestion() {
     $("#image-holder").text("");
-    if (count <= questions.length - 1) {
+    if (count < questions.length) {
       displayQuestion();
     }
   }
 
+  //Resets the game results
+  function reset() {
+    clearInterval(intervalId);
+    correct = 0;
+    incorrect = 0;
+    unanswered = 0;
+    count = 0;
+    startGame();
+  }
   //Checks to see if game is out of questions
   function endGame() {
     if (count === questions.length) {
@@ -201,22 +207,8 @@ $(document).ready(function() {
     }
   }
 
-  //Resets the game results
-  function reset() {
-    clearInterval(intervalId);
-    correct = 0;
-    incorrect = 0;
-    unanswered = 0;
-    count = 0;
-    startGame();
-  }
-
   //Starts the game when button is clicked
   $("#startButton").on("click", function() {
     startGame();
   });
 });
-
-//instead of removing the questions and choices div entirely, just replace them with empty strings
-//OR toggle their css classes; .addClass or .removeClass and set the CSS property to none
-//pick whichever works best
