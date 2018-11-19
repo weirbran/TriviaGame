@@ -4,17 +4,17 @@
 
 This is the fifth assignment for the Coding Bootcamp delivered at University of Toronto Mississauga.
 
-In this assignment, we were required to create a trivia game using JavaScript for the business logic and jQuery to manipulate HTML. The questions and answers are held in Javascript arrays that are displayed on the screen. Functions are used to start/stop the game, run the timer, calculate and keep track of scores, and check answers. jQuery is used to dynamically manipulate the DOM and show the user the countdown, images, and different options that they can select. 
+In this assignment, we were required to create a trivia game using JavaScript for the business logic and jQuery to manipulate HTML. The questions and answers are held in Javascript arrays that are displayed on the screen. Functions are used to start/stop the game, run the timer, calculate and keep track of scores, and check answers. jQuery is used to dynamically manipulate the DOM and show the user the countdown, images, and different options that they can select.
 
 ### Description
 
-Click 'Start' to begin the game and begin displaying trivia questions.
+![start-game](https://user-images.githubusercontent.com/37091892/48739929-8ab61780-ec23-11e8-93c7-9f184627e30b.JPG)
 
-![start-game](https://user-images.githubusercontent.com/37091892/48739623-889f8900-ec22-11e8-80c9-ba93d0190825.JPG)
+Click 'Start' to begin the game and begin displaying trivia questions.
 
 ![trivia-question](https://user-images.githubusercontent.com/37091892/48739626-889f8900-ec22-11e8-9018-1ece1c171c5f.JPG)
 
-The user has 10 seconds to answer each question. A counter is displayed to show how much time is remaining. The correct answer to each question is displayed after the user's selection or if no answer is selected before time runs out.  
+The user has 10 seconds to answer each question. A counter is displayed to show how much time is remaining. The correct answer to each question is displayed after the user's selection or if no answer is selected before time runs out.
 
 ![correct-answer](https://user-images.githubusercontent.com/37091892/48739620-889f8900-ec22-11e8-82fd-3bde714195f8.JPG)
 
