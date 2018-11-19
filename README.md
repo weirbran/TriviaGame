@@ -1,21 +1,30 @@
-# TriviaGame
+# Trivia Game
 
 ### Overview
 
-This is the fifth assignment for the Coding Bootcamp delivereed at University of Toronto Mississauga.
+This is the fifth assignment for the Coding Bootcamp delivered at University of Toronto Mississauga.
 
-In this assignment, we were required to create a trivia game using JavaScript for the logic and jQuery to manipulate HTML.
+In this assignment, we were required to create a trivia game using JavaScript for the business logic and jQuery to manipulate HTML. The questions and answers are held in Javascript arrays that are displayed on the screen. Functions are used to start/stop the game, run the timer, calculate and keep track of scores, and check answers. jQuery is used to dynamically manipulate the DOM and show the user the countdown, images, and different options that they can select. 
 
-### Getting Started
+### Description
 
-**Sci-Fi Movie Trivia**
+Click 'Start' to begin the game and begin displaying trivia questions.
 
-Instructions:
+![start-game](https://user-images.githubusercontent.com/37091892/48739623-889f8900-ec22-11e8-80c9-ba93d0190825.JPG)
 
-Click Start to begin the game.
-You have 30 seconds to answer each question and a counter will be displayed to show how much time is reamining.
-The answer to each question is displayed afterwards whether you selected the correct answer, the incorrect answer, or if no answer is selected before time ran out. If no answer is selected before the timer runs out, the trivia will advance to the next question. At the end of the game, you will be shown the number of correct answers, the number of incorrect answers, and the number of unanswered questions.
-You'll be able to restart the game without reloading the page by clicking 'Start Over'.
+![trivia-question](https://user-images.githubusercontent.com/37091892/48739626-889f8900-ec22-11e8-9018-1ece1c171c5f.JPG)
+
+The user has 10 seconds to answer each question. A counter is displayed to show how much time is remaining. The correct answer to each question is displayed after the user's selection or if no answer is selected before time runs out.  
+
+![correct-answer](https://user-images.githubusercontent.com/37091892/48739620-889f8900-ec22-11e8-82fd-3bde714195f8.JPG)
+
+![incorrect-answer](https://user-images.githubusercontent.com/37091892/48739622-889f8900-ec22-11e8-9400-0d5174bc41d1.JPG)
+
+![times-up](https://user-images.githubusercontent.com/37091892/48739625-889f8900-ec22-11e8-992b-33451993c0ea.JPG)
+
+At the end of the game, the user is shown their number of correct answers, their number of incorrect answers, and their number of unanswered questions. The user can restart the game without reloading the page by clicking 'Start Over'.
+
+![game-over](https://user-images.githubusercontent.com/37091892/48739621-889f8900-ec22-11e8-9974-6f3b106b46d4.JPG)
 
 ## Built With
 
@@ -25,6 +34,6 @@ You'll be able to restart the game without reloading the page by clicking 'Start
 - JavaScript
 - [jQuery](https://api.jquery.com/) - JavaScript Library
 
-Try it! Click on the following link to preview the completed assignment:
+Try it! Click on the following link to view the completed assignment:
 
 https://github.com/weirbran/TriviaGame
